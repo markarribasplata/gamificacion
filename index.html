@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowQuest: Estructuras de Control de Flujo</title>
+    <title>Estructuras de Control de Flujo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Tone.js for optional audio feedback -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <!-- Canvas Confetti for Victory celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -27,9 +29,7 @@
                             600: '#4f46e5',
                             700: '#4338ca',
                             900: '#312e81',
-                        },
-                        emeraldCustom: '#10b981',
-                        amberCustom: '#f59e0b',
+                        }
                     },
                     animation: {
                         'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -57,7 +57,6 @@
         .glow-effect {
             box-shadow: 0 0 20px rgba(99, 102, 241, 0.35);
         }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -113,12 +112,11 @@
                 </div>
 
                 <!-- Logros / Badges Counter -->
-                <div class="flex items-center space-x-2 bg-slate-800/80 border border-slate-700/60 px-3 py-1.5 rounded-lg">
-                    <i class="fa-solid fa-award text-emerald-400 text-sm"></i>
-                    <div class="text-xs">
-                        <p class="text-slate-400 text-[10px] uppercase font-bold tracking-wider leading-none">Logros</p>
-                        <p id="badges-display" class="font-extrabold text-sm text-emerald-400 leading-tight">0/4</p>
-                    </div>
+            <div class="flex items-center space-x-2 bg-slate-800/80 border border-slate-700/60 px-3 py-1.5 rounded-lg">
+                <i class="fa-solid fa-award text-emerald-400 text-sm"></i>
+                <div class="text-xs">
+                    <p class="text-slate-400 text-[10px] uppercase font-bold tracking-wider leading-none">Logros</p>
+                    <p id="badges-display" class="font-extrabold text-sm text-emerald-400 leading-tight">0/8</p>
                 </div>
             </div>
 
@@ -158,24 +156,24 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-left py-2">
                 <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 flex items-start space-x-3">
-                    <i class="fa-solid fa-[#6366f1] fa-film text-indigo-400 text-lg mt-0.5"></i>
+                    <i class="fa-solid fa-film text-indigo-400 text-lg mt-0.5"></i>
                     <div>
-                        <h4 class="text-xs font-bold text-slate-200">1. Simulación Visual</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Ves el flujo de control en acción con animaciones en vivo.</p>
+                        <h4 class="text-xs font-bold text-slate-200">1. 8 Simuladores Visuales</h4>
+                        <p class="text-xs text-slate-400 mt-0.5">Manipula en vivo el comportamiento de cada estructura.</p>
                     </div>
                 </div>
                 <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 flex items-start space-x-3">
                     <i class="fa-solid fa-gamepad text-emerald-400 text-lg mt-0.5"></i>
                     <div>
-                        <h4 class="text-xs font-bold text-slate-200">2. Micro-Reto Práctico</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Resuelves el acertijo con retroalimentación sin penalización.</p>
+                        <h4 class="text-xs font-bold text-slate-200">2. Banco de 8 Retos</h4>
+                        <p class="text-xs text-slate-400 mt-0.5">Preguntas graduadas sin castigo ni estrés amigdalino.</p>
                     </div>
                 </div>
                 <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 flex items-start space-x-3">
                     <i class="fa-solid fa-trophy text-amber-400 text-lg mt-0.5"></i>
                     <div>
-                        <h4 class="text-xs font-bold text-slate-200">3. Recompensas (+100 XP)</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Gana insignias, acumula racha y desbloquea nivel final.</p>
+                        <h4 class="text-xs font-bold text-slate-200">3. Recompensas & Insignias</h4>
+                        <p class="text-xs text-slate-400 mt-0.5">Acumula XP, mantén tu racha y desbloquea medallas.</p>
                     </div>
                 </div>
             </div>
@@ -337,11 +335,11 @@
                 <div class="grid grid-cols-3 gap-3 bg-slate-950/60 p-4 rounded-2xl border border-slate-800">
                     <div class="text-center">
                         <p class="text-xs text-slate-400 uppercase font-semibold">Puntos Totales</p>
-                        <p id="final-points" class="text-xl sm:text-2xl font-extrabold text-amber-400 mt-1">400</p>
+                        <p id="final-points" class="text-xl sm:text-2xl font-extrabold text-amber-400 mt-1">800</p>
                     </div>
                     <div class="text-center border-x border-slate-800">
                         <p class="text-xs text-slate-400 uppercase font-semibold">Insignias</p>
-                        <p id="final-badges" class="text-xl sm:text-2xl font-extrabold text-emerald-400 mt-1">4 / 4</p>
+                        <p id="final-badges" class="text-xl sm:text-2xl font-extrabold text-emerald-400 mt-1">8 / 8</p>
                     </div>
                     <div class="text-center">
                         <p class="text-xs text-slate-400 uppercase font-semibold">Efectividad</p>
@@ -358,15 +356,15 @@
                     <ul class="space-y-1.5 text-slate-300">
                         <li class="flex items-center gap-2">
                             <i class="fa-solid fa-check text-emerald-400"></i>
-                            <span><b>BBL (Cerebro):</b> Evitó la saturación del córtex prefrontal mediante retos cortos.</span>
+                            <span><b>BBL (Cerebro):</b> Evitó la fatiga prefrontal fraccionando los 8 conceptos en micro-pasos.</span>
                         </li>
                         <li class="flex items-center gap-2">
                             <i class="fa-solid fa-check text-emerald-400"></i>
-                            <span><b>MBE (Mente/Memoria):</b> Fijación de conceptos `if/else`, `switch` y bucles por recuperación activa.</span>
+                            <span><b>MBE (Mente/Memoria):</b> Fijación profunda por manipulación visual + práctica de recuperación activa.</span>
                         </li>
                         <li class="flex items-center gap-2">
                             <i class="fa-solid fa-check text-emerald-400"></i>
-                            <span><b>SEL (Socioemocional):</b> Reducción de cortisol al eliminar la penalización punitiva.</span>
+                            <span><b>SEL (Socioemocional):</b> Clima seguro de aprendizaje con cero penalización ante equivocaciones.</span>
                         </li>
                     </ul>
                 </div>
@@ -392,14 +390,15 @@
 
     <!-- GAME LOGIC SCRIPT -->
     <script>
-        // MODULE DATA: CONCEPTS + CHALLENGES
+        // EXPANDED MODULE DATA: 8 COMPLETE CONCEPTS + CHALLENGES
         const modules = [
+            // MODULE 1: IF / ELSE
             {
                 id: 1,
-                topic: "Condicionales (if / else)",
+                topic: "Bifurcación (if / else)",
                 conceptTitle: "Bifurcación de Decisiones: if / else",
-                conceptDesc: "Imagina un vehículo en un semáforo. Si la luz es Verde (true), el auto avanza; de lo contrario (else), se detiene en la intersección.",
-                conceptCode: `let luzSemáforo = "VERDE";\n\nif (luzSemáforo === "VERDE") {\n    avanzarAuto(); // Se cumple la condición\n} else {\n    frenarAuto();\n}`,
+                conceptDesc: "El flujo de ejecución toma un camino específico según el valor de verdad (true/false) de la condición evaluada.",
+                conceptCode: `let luzSemáforo = "VERDE";\n\nif (luzSemáforo === "VERDE") {\n    avanzarAuto(); // Se ejecuta si la condición es TRUE\n} else {\n    frenarAuto();  // Se ejecuta si es FALSE\n}`,
                 setupConcept: (container) => {
                     container.innerHTML = `
                         <div class="w-full max-w-md space-y-4 text-center">
@@ -416,7 +415,7 @@
                                 </div>
                             </div>
                             <button onclick="toggleTrafficLight()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs px-4 py-2 rounded-lg transition-all font-mono">
-                                Cambiar Semáforo (Toggle State)
+                                Cambiar Estado del Semáforo
                             </button>
                         </div>
                     `;
@@ -443,22 +442,22 @@
                     desc: "¿Qué mensaje mostrará la consola según el valor asignado a la variable `temperatura`?",
                     code: `let temperatura = 28;\n\nif (temperatura > 30) {\n    console.log("Alerta de Calor");\n} else if (temperatura >= 20) {\n    console.log("Clima Templado");\n} else {\n    console.log("Clima Frío");\n}`,
                     options: [
-                        { text: '"Alerta de Calor"', correct: false, hint: "Observa la condición if (28 > 30). 28 no es mayor que 30, por lo que pasa a la siguiente instrucción." },
-                        { text: '"Clima Templado"', correct: true, hint: "¡Correcto! 28 es mayor o igual a 20, por lo que ejecuta esa rama del condicional." },
-                        { text: '"Clima Frío"', correct: false, hint: "La condición 'else' solo se ejecuta si todas las anteriores son falsas, pero 28 >= 20 sí se cumple." },
-                        { text: "Error de Sintaxis", correct: false, hint: "La estructura if / else if / else está correctamente redactada." }
+                        { text: '"Alerta de Calor"', correct: false, hint: "Observa la condición if (28 > 30). 28 no es mayor que 30." },
+                        { text: '"Clima Templado"', correct: true, hint: "¡Correcto! 28 >= 20 es verdadero, ejecutando este bloque." },
+                        { text: '"Clima Frío"', correct: false, hint: "La rama else solo se activa si todas las anteriores son falsas." },
+                        { text: "Error de Sintaxis", correct: false, hint: "La estructura if / else if / else es perfectamente válida." }
                     ],
                     badgeName: "Dominio de Condicionales",
-                    explanation: "Las estructuras `if / else if` permiten bifurcar el flujo de ejecución evaluando condiciones de forma secuencial hasta encontrar la primera que sea verdadera."
+                    explanation: "Las estructuras `if / else if` evalúan secuencialmente hasta encontrar la primera expresión verdadera."
                 }
             },
+            // MODULE 2: SWITCH / CASE
             {
                 id: 2,
                 topic: "Selección Múltiple (switch / case)",
-                topic: "Selección Múltiple (switch / case)",
                 conceptTitle: "Enrutador Directo: switch",
-                conceptDesc: "El bloque `switch` actúa como un clasificador automático. Evalúa una variable y salta inmediatamente a la casilla coincidente (case).",
-                conceptCode: `let paquete = "AZUL";\n\nswitch(paquete) {\n    case "ROJO": depositarEnSlotA(); break;\n    case "AZUL": depositarEnSlotB(); break; // Coincidencia exacta\n}`,
+                conceptDesc: "El bloque `switch` salta inmediatamente a la coincidencia exacta de una variable sin evaluar múltiples condiciones una por una.",
+                conceptCode: `let canal = "AZUL";\n\nswitch(canal) {\n    case "ROJO": rutarSlotA(); break;\n    case "AZUL": rutarSlotB(); break; // Coincidencia directa\n}`,
                 setupConcept: (container) => {
                     container.innerHTML = `
                         <div class="w-full max-w-md space-y-4 text-center">
@@ -498,21 +497,22 @@
                     desc: "Analiza el bloque `switch`. ¿Cuál será el resultado enviado a la consola para el rol `'EDITOR'`?",
                     code: `let rol = 'EDITOR';\n\nswitch(rol) {\n    case 'ADMIN':\n        console.log("Acceso Total");\n        break;\n    case 'EDITOR':\n        console.log("Acceso a Contenido");\n        break;\n    default:\n        console.log("Acceso Restringido");\n}`,
                     options: [
-                        { text: '"Acceso Total"', correct: false, hint: "El valor de rol es 'EDITOR', por lo que no coincide con la etiqueta 'ADMIN'." },
-                        { text: '"Acceso Restringido"', correct: false, hint: "El bloque 'default' solo se activa si ninguna otra etiqueta coincide." },
-                        { text: '"Acceso a Contenido"', correct: true, hint: "¡Excelente! La etiqueta case 'EDITOR' coincide exactamente y ejecuta su instrucción hasta la palabra clave break." },
-                        { text: "No imprime nada", correct: false, hint: "Dado que hay una coincidencia con 'EDITOR', sí imprimirá su respectivo mensaje." }
+                        { text: '"Acceso Total"', correct: false, hint: "El valor 'EDITOR' no coincide con 'ADMIN'." },
+                        { text: '"Acceso Restringido"', correct: false, hint: "El bloque default solo se ejecuta si no hay coincidencia previo." },
+                        { text: '"Acceso a Contenido"', correct: true, hint: "¡Excelente! La etiqueta case 'EDITOR' coincide exactamente." },
+                        { text: "No imprime nada", correct: false, hint: "Sí imprime la coincidencia correspondiente." }
                     ],
                     badgeName: "Especialista en Switch",
-                    explanation: "La sentencia `switch` compara un valor exacto contra múltiples etiquetas `case`, siendo una alternativa limpia a múltiples parches de `if` encadenados."
+                    explanation: "La sentencia `switch` compara un valor exacto contra etiquetas `case`, ofreciendo máxima legibilidad."
                 }
             },
+            // MODULE 3: FOR LOOP
             {
                 id: 3,
-                topic: "Bucles Determinados (for)",
+                topic: "Bucle Determinado (for)",
                 conceptTitle: "Repetición Controlada: bucle for",
-                conceptDesc: "Un ciclo `for` repite un conjunto de pasos un número exacto de veces usando un contador (`let i = 1; i <= n; i++`).",
-                conceptCode: `for (let i = 1; i <= 3; i++) {\n    ensamblarPieza(i); // Repite exactamente 3 veces\n}`,
+                conceptDesc: "Un ciclo `for` repite un bloque un número conocido de veces mediante un contador inicial, condición de término e incremento.",
+                conceptCode: `for (let i = 1; i <= 3; i++) {\n    ensamblarPieza(i); // Repite exactamente 3 iteraciones\n}`,
                 setupConcept: (container) => {
                     container.innerHTML = `
                         <div class="w-full max-w-md space-y-4 text-center">
@@ -539,68 +539,234 @@
                     };
                 },
                 challenge: {
-                    title: "Reto 3: Acumulador con Bucle `for`",
+                    title: "Reto 3: Acumulador en Bucle",
                     desc: "Determina cuál será el valor final almacenado en la variable `suma` tras finalizar el ciclo:",
                     code: `let suma = 0;\n\nfor (let i = 1; i <= 3; i++) {\n    suma += i;\n}\n\nconsole.log(suma);`,
                     options: [
-                        { text: "3", correct: false, hint: "Recuerda que en cada vuelta se suma el valor actual de i (1, luego 2, luego 3)." },
-                        { text: "6", correct: true, hint: "¡Perfecto! En la iteración 1: 0+1=1. En la 2: 1+2=3. En la 3: 3+3=6." },
-                        { text: "5", correct: false, hint: "Revisa la suma acumulada vuelta a vuelta: i toma los valores 1, 2 y 3." },
-                        { text: "0", correct: false, hint: "El bucle sí se ejecuta ya que la condición inicial 1 <= 3 es verdadera." }
+                        { text: "3", correct: false, hint: "En cada vuelta i se suma progresivamente: 1 + 2 + 3." },
+                        { text: "6", correct: true, hint: "¡Perfecto! Vuelta 1: 0+1=1. Vuelta 2: 1+2=3. Vuelta 3: 3+3=6." },
+                        { text: "5", correct: false, hint: "Calcula los pasos secuenciales de i = 1 a 3." },
+                        { text: "0", correct: false, hint: "La condición inicial (1 <= 3) es verdadera, por lo que el bucle sí se ejecuta." }
                     ],
                     badgeName: "Maestro del Bucle",
-                    explanation: "El bucle `for` repite la ejecución de un bloque de código un número determinado de veces mientras la condición especificada se mantenga verdadera."
+                    explanation: "El bucle `for` incrementa o decrementa la variable de control en cada vuelta hasta cumplir la condición."
                 }
             },
+            // MODULE 4: WHILE LOOP
             {
                 id: 4,
-                topic: "Bucles Condicionales (while)",
+                topic: "Bucle Condicional (while)",
                 conceptTitle: "Repetición Indefinida: bucle while",
-                conceptDesc: "El ciclo `while` continúa ejecutándose MIENTRAS la condición sea verdadera (`true`). Debe existir una alteración interna para evitar ciclos infinitos.",
-                conceptCode: `let carga = 0;\nwhile (carga < 100) {\n    carga += 50; // Modifica el estado hasta volver la condición falsa\n}`,
+                conceptDesc: "El ciclo `while` repite su contenido MIENTRAS la condición sea verdadera. Debe haber una modificación de estado interna.",
+                conceptCode: `let nivelAgua = 0;\nwhile (nivelAgua < 100) {\n    nivelAgua += 50; // Altera el estado para romper el ciclo eventualmente\n}`,
                 setupConcept: (container) => {
                     container.innerHTML = `
                         <div class="w-full max-w-md space-y-4 text-center">
                             <div class="w-full bg-slate-900 h-6 rounded-full border border-slate-700 overflow-hidden p-1">
-                                <div id="battery-bar" class="w-0 h-full bg-emerald-500 rounded-full transition-all duration-500"></div>
+                                <div id="tank-bar" class="w-0 h-full bg-cyan-500 rounded-full transition-all duration-500"></div>
                             </div>
-                            <p id="battery-text" class="text-xs font-mono text-slate-400">Condición: carga < 100 (Estado actual: 0%)</p>
-                            <button onclick="stepWhileLoop()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-4 py-2 rounded-lg transition-all font-mono">
-                                Cargar +50% (Siguiente vuelta while)
+                            <p id="tank-text" class="text-xs font-mono text-slate-400">Condición: nivel < 100 (Estado: 0%)</p>
+                            <button onclick="stepWhileLoop()" class="bg-cyan-600 hover:bg-cyan-500 text-white text-xs px-4 py-2 rounded-lg transition-all font-mono">
+                                Inyectar +50% (Siguiente vuelta while)
                             </button>
                         </div>
                     `;
-                    window.batteryCharge = 0;
+                    window.tankLevel = 0;
                     window.stepWhileLoop = () => {
-                        const bar = document.getElementById('battery-bar');
-                        const text = document.getElementById('battery-text');
-                        if (window.batteryCharge < 100) {
-                            window.batteryCharge += 50;
-                            bar.style.width = `${window.batteryCharge}%`;
-                            if (window.batteryCharge >= 100) {
-                                text.innerText = `Condición: carga < 100 (FALSA, 100%). ¡Bucle termina!`;
-                            } else {
-                                text.innerText = `Condición: carga < 100 (VERDADERA, ${window.batteryCharge}%). Continúa ciclo.`;
-                            }
+                        const bar = document.getElementById('tank-bar');
+                        const text = document.getElementById('tank-text');
+                        if (window.tankLevel < 100) {
+                            window.tankLevel += 50;
+                            bar.style.width = `${window.tankLevel}%`;
+                            text.innerText = window.tankLevel >= 100 
+                                ? `Condición: nivel < 100 (FALSA, 100%). ¡Bucle termina!`
+                                : `Condición: nivel < 100 (VERDADERA, ${window.tankLevel}%). Continúa ciclo.`;
                         } else {
-                            window.batteryCharge = 0;
+                            window.tankLevel = 0;
                             bar.style.width = `0%`;
-                            text.innerText = `Condición: carga < 100 (Estado actual: 0%)`;
+                            text.innerText = `Condición: nivel < 100 (Estado: 0%)`;
                         }
                     };
                 },
                 challenge: {
-                    title: "Reto 4: Detectar el Bucle Infinito",
-                    desc: "Identifica la causa por la cual este código se congelaría en producción:",
-                    code: `let contador = 5;\n\nwhile (contador > 0) {\n    console.log("Procesando...");\n    // Falta una línea crucial aquí\n}`,
+                    title: "Reto 4: Prevención de Bucle Infinito",
+                    desc: "Identifica la razón por la cual este ciclo congelará la ejecución:",
+                    code: `let contador = 5;\n\nwhile (contador > 0) {\n    console.log("Procesando datos...");\n    // Omisión de alteración de estado\n}`,
                     options: [
-                        { text: "Falta decrementar 'contador' (ej. contador--)", correct: true, hint: "¡Genial! Sin decrementar el contador, la condición (contador > 0) jamás dejará de cumplirse, provocando un bucle infinito." },
-                        { text: "La condición while debe usar paréntesis cuadrados", correct: false, hint: "La sintaxis estándar en JS para la condición while usa paréntesis redondos." },
-                        { text: "No se puede usar console.log dentro de un while", correct: false, hint: "console.log es totalmente válido dentro de cualquier estructura de control." },
-                        { text: "Se debe declarar la variable dentro del ciclo", correct: false, hint: "La variable de control debe existir antes o en la cabecera del ciclo para ser evaluada." }
+                        { text: "Falta decrementar contador (ej. contador--)", correct: true, hint: "¡Excelente! Sin reducir contador, (contador > 0) siempre será verdadero." },
+                        { text: "No se puede usar console.log en un while", correct: false, hint: "console.log es completamente válido dentro del ciclo." },
+                        { text: "La condición debe llevar llaves", correct: false, hint: "La condición del while va encerrada en paréntesis." },
+                        { text: "Falta inicializar la variable", correct: false, hint: "La variable contador fue declarada con valor 5." }
                     ],
                     badgeName: "Depurador Pro",
-                    explanation: "Para evitar bucles infinitos en un ciclo `while`, siempre debemos garantizar que la condición sufra una modificación en su estado interno hacia un caso de término."
+                    explanation: "Todo bucle `while` requiere que las variables de la condición cambien en cada iteración para garantizar su término."
+                }
+            },
+            // MODULE 5: DO...WHILE
+            {
+                id: 5,
+                topic: "Garantía de Ejecución (do...while)",
+                conceptTitle: "Ejecución Garantizada: do...while",
+                conceptDesc: "A diferencia del `while`, el ciclo `do...while` ejecuta su bloque AL MENOS UNA VEZ antes de evaluar si la condición es verdadera.",
+                conceptCode: `let claveCorrecta = false;\ndo {\n    intentarAcceso(); // Se ejecuta 1 vez sí o sí\n} while (claveCorrecta === true);`,
+                setupConcept: (container) => {
+                    container.innerHTML = `
+                        <div class="w-full max-w-md space-y-4 text-center">
+                            <div id="dowhile-display" class="p-3 bg-slate-900 border border-slate-800 rounded-xl text-xs font-mono text-emerald-400">
+                                Ejecuciones realizadas: <b id="dowhile-count">0</b>
+                            </div>
+                            <p class="text-xs text-slate-400">Aunque la condición sea falsa de entrada, se ejecuta 1 vez.</p>
+                            <button onclick="triggerDoWhile()" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-lg transition-all font-mono">
+                                Probar do...while (Condición = FALSE)
+                            </button>
+                        </div>
+                    `;
+                    window.doWhileCount = 0;
+                    window.triggerDoWhile = () => {
+                        window.doWhileCount++;
+                        document.getElementById('dowhile-count').innerText = window.doWhileCount;
+                    };
+                },
+                challenge: {
+                    title: "Reto 5: Conteo de Ejecuciones Minimas",
+                    desc: "¿Cuántas veces se imprimirá 'Ejecutando' en este bloque de código?",
+                    code: `let x = 10;\n\ndo {\n    console.log("Ejecutando");\n} while (x < 5);`,
+                    options: [
+                        { text: "0 veces", correct: false, hint: "Recuerda que do...while SIEMPRE ejecuta el bloque antes de evaluar la condición." },
+                        { text: "1 vez", correct: true, hint: "¡Correcto! Se ejecuta 1 vez, luego evalúa (10 < 5) que es falso y finaliza." },
+                        { text: "5 veces", correct: false, hint: "x vale 10, no hay incremento de iteración." },
+                        { text: "Infinitas veces", correct: false, hint: "La condición 10 < 5 es falsa, por lo que se detiene tras la primera vuelta." }
+                    ],
+                    badgeName: "Dominio de Do...While",
+                    explanation: "`do...while` asegura la ejecución inicial del bloque independientemente del estado de la condición."
+                }
+            },
+            // MODULE 6: BREAK & CONTINUE
+            {
+                id: 6,
+                topic: "Interrupciones (break / continue)",
+                conceptTitle: "Control Manual de Flujo: break & continue",
+                conceptDesc: "`break` rompe y sale inmediatamente del bucle. `continue` salta el resto de la iteración actual y pasa a la siguiente.",
+                conceptCode: `for (let i = 1; i <= 5; i++) {\n    if (i === 3) continue; // Salta el 3\n    if (i === 5) break;    // Detiene el ciclo por completo\n}`,
+                setupConcept: (container) => {
+                    container.innerHTML = `
+                        <div class="w-full max-w-md space-y-4 text-center">
+                            <div class="flex justify-center items-center gap-2" id="break-items">
+                                <span class="px-2.5 py-1.5 rounded bg-slate-900 border border-slate-800 text-xs font-mono text-slate-400">1</span>
+                                <span class="px-2.5 py-1.5 rounded bg-slate-900 border border-slate-800 text-xs font-mono text-slate-400">2</span>
+                                <span class="px-2.5 py-1.5 rounded bg-amber-950 border border-amber-800 text-xs font-mono text-amber-300">3 (Skip)</span>
+                                <span class="px-2.5 py-1.5 rounded bg-rose-950 border border-rose-800 text-xs font-mono text-rose-300">4 (Break)</span>
+                            </div>
+                            <button onclick="simulateBreakContinue()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs px-4 py-2 rounded-lg transition-all font-mono">
+                                Simular Bucle con continue & break
+                            </button>
+                        </div>
+                    `;
+                    window.simulateBreakContinue = () => {
+                        const items = document.getElementById('break-items').children;
+                        items[0].className = "px-2.5 py-1.5 rounded bg-emerald-600 text-white font-bold text-xs font-mono";
+                        setTimeout(() => items[1].className = "px-2.5 py-1.5 rounded bg-emerald-600 text-white font-bold text-xs font-mono", 400);
+                        setTimeout(() => items[2].className = "px-2.5 py-1.5 rounded bg-amber-500 text-slate-950 font-bold text-xs font-mono animate-bounce", 800);
+                        setTimeout(() => items[3].className = "px-2.5 py-1.5 rounded bg-rose-600 text-white font-bold text-xs font-mono scale-110", 1200);
+                    };
+                },
+                challenge: {
+                    title: "Reto 6: Rastreo de Salida con Interrupción",
+                    desc: "¿Cuáles valores se imprimirán en consola tras ejecutar este ciclo?",
+                    code: `for (let i = 1; i <= 4; i++) {\n    if (i === 2) continue;\n    if (i === 4) break;\n    console.log(i);\n}`,
+                    options: [
+                        { text: "1, 2, 3, 4", correct: false, hint: "Observa que cuando i === 2 se activa continue (se salta la impresión)." },
+                        { text: "1, 3", correct: true, hint: "¡Genial! 1 se imprime. 2 se salta. 3 se imprime. 4 activa el break y termina." },
+                        { text: "1, 2, 3", correct: false, hint: "El 2 es omitido por el continue." },
+                        { text: "3, 4", correct: false, hint: "El 1 sí se imprime antes de evaluar las siguientes iteraciones." }
+                    ],
+                    badgeName: "Especialista en Flujo",
+                    explanation: "`continue` omite el resto de la iteración actual, mientras que `break` destruye el bucle al instante."
+                }
+            },
+            // MODULE 7: NESTED LOOPS
+            {
+                id: 7,
+                topic: "Bucles Anidados (Matriz)",
+                conceptTitle: "Estructuras Multidimensionales: Bucles Anidados",
+                conceptDesc: "Un bucle dentro de otro bucle permite recorrer matrices de 2 dimensiones (filas y columnas).",
+                conceptCode: `for (let fila = 1; fila <= 2; fila++) {\n    for (let col = 1; col <= 2; col++) {\n        procesarCelda(fila, col);\n    }\n}`,
+                setupConcept: (container) => {
+                    container.innerHTML = `
+                        <div class="w-full max-w-md space-y-4 text-center">
+                            <div class="grid grid-cols-2 gap-2 max-w-[160px] mx-auto" id="matrix-grid">
+                                <div class="p-3 bg-slate-900 border border-slate-800 rounded text-xs font-mono text-slate-500">(1,1)</div>
+                                <div class="p-3 bg-slate-900 border border-slate-800 rounded text-xs font-mono text-slate-500">(1,2)</div>
+                                <div class="p-3 bg-slate-900 border border-slate-800 rounded text-xs font-mono text-slate-500">(2,1)</div>
+                                <div class="p-3 bg-slate-900 border border-slate-800 rounded text-xs font-mono text-slate-500">(2,2)</div>
+                            </div>
+                            <button onclick="runMatrixSim()" class="bg-purple-600 hover:bg-purple-500 text-white text-xs px-4 py-2 rounded-lg transition-all font-mono">
+                                Recorrer Matriz (2x2)
+                            </button>
+                        </div>
+                    `;
+                    window.runMatrixSim = () => {
+                        const cells = document.getElementById('matrix-grid').children;
+                        for(let i=0; i<4; i++) {
+                            setTimeout(() => {
+                                cells[i].className = "p-3 bg-purple-600 border border-purple-400 text-white font-bold rounded text-xs font-mono scale-105 transition-all";
+                            }, i * 350);
+                        }
+                    };
+                },
+                challenge: {
+                    title: "Reto 7: Conteo de Iteraciones Totales",
+                    desc: "¿Cuántas veces en TOTAL se ejecutará la instrucción `console.log`?",
+                    code: `for (let i = 0; i < 3; i++) {\n    for (let j = 0; j < 2; j++) {\n        console.log("*");\n    }\n}`,
+                    options: [
+                        { text: "5 veces", correct: false, hint: "Las iteraciones se multiplican: bucle externo x bucle interno." },
+                        { text: "6 veces", correct: true, hint: "¡Correcto! 3 vueltas externas * 2 vueltas internas = 6 ejecuciones totales." },
+                        { text: "3 veces", correct: false, hint: "Por cada una de las 3 vueltas externas, la interna gira 2 veces." },
+                        { text: "2 veces", correct: false, hint: "El bucle externo se repite 3 veces." }
+                    ],
+                    badgeName: "Arquitecto de Matrices",
+                    explanation: "En bucles anidados, el bucle interno completa todas sus vueltas por cada iteración individual del bucle externo."
+                }
+            },
+            // MODULE 8: TERNARY OPERATOR
+            {
+                id: 8,
+                topic: "Operador Ternario (? :)",
+                conceptTitle: "Bifurcación Compacta: Operador Ternario",
+                conceptDesc: "El operador ternario `condición ? verdadero : falso` es una alternativa compacta en una sola línea para el `if/else` tradicional.",
+                conceptCode: `let esMayor = (edad >= 18) ? "Adulto" : "Menor";`,
+                setupConcept: (container) => {
+                    container.innerHTML = `
+                        <div class="w-full max-w-md space-y-4 text-center">
+                            <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl text-xs font-mono text-indigo-300">
+                                Estado actual: <span id="ternary-state" class="font-bold text-emerald-400">"Adulto"</span>
+                            </div>
+                            <button onclick="toggleTernary()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-4 py-2 rounded-lg transition-all font-mono">
+                                Evaluar Ternario (edad = 15 vs 20)
+                            </button>
+                        </div>
+                    `;
+                    window.ternaryAge = 20;
+                    window.toggleTernary = () => {
+                        window.ternaryAge = window.ternaryAge === 20 ? 15 : 20;
+                        const res = (window.ternaryAge >= 18) ? '"Adulto"' : '"Menor"';
+                        const el = document.getElementById('ternary-state');
+                        el.innerText = res;
+                        el.className = window.ternaryAge >= 18 ? "font-bold text-emerald-400" : "font-bold text-amber-400";
+                    };
+                },
+                challenge: {
+                    title: "Reto 8: Evaluación Expresiva",
+                    desc: "¿Qué valor asumirá la variable `estado` tras esta evaluación en una línea?",
+                    code: `let puntos = 85;\nlet estado = (puntos >= 70) ? "APROBADO" : "REPROBADO";\n\nconsole.log(estado);`,
+                    options: [
+                        { text: '"REPROBADO"', correct: false, hint: "La condición es (85 >= 70), la cual es verdadera." },
+                        { text: '"APROBADO"', correct: true, hint: "¡Excelente! Al ser verdadera la condición, devuelve el valor tras el signo '?'." },
+                        { text: "true", correct: false, hint: "El operador ternario devuelve la expresión indicada, no solo el booleano." },
+                        { text: "Error de Sintaxis", correct: false, hint: "El formato (condicion) ? expresion1 : expresion2 es válido." }
+                    ],
+                    badgeName: "Maestro NeuroFlow",
+                    explanation: "El operador ternario comprime la toma de decisiones simples devolviendo un valor directo según la evaluación booleana."
                 }
             }
         ];
@@ -664,6 +830,18 @@
                     synth.triggerAttackRelease("C5", "4n");
                 }
             } catch (e) {}
+        }
+
+        function triggerConfetti() {
+            try {
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                }
+            } catch(e) {}
         }
 
         function startQuiz() {
@@ -752,7 +930,7 @@
                 feedbackCard.className = "rounded-2xl p-5 border transition-all duration-300 space-y-3 bg-emerald-950/50 border-emerald-500/60 text-emerald-100";
                 feedbackIconBg.className = "p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400 text-xl";
                 feedbackIcon.className = "fa-solid fa-circle-check";
-                feedbackTitle.innerText = "¡Excelente Respuesta! (+100 XP)";
+                feedbackTitle.innerText = `¡Excelente Respuesta! Insignia: [${q.badgeName}] (+100 XP)`;
                 feedbackText.innerHTML = `${selectedOpt.hint}<br><br><span class="text-xs text-emerald-300 font-mono">💡 Fundamento: ${q.explanation}</span>`;
                 
                 btnNext.classList.remove('hidden');
@@ -821,6 +999,7 @@
 
             victoryModal.classList.remove('hidden');
             playSound('victory');
+            triggerConfetti();
         }
 
         function restartQuiz() {
